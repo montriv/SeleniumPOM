@@ -26,6 +26,20 @@ public class LoginTest {
         driver.navigate().to("https://practicetestautomation.com/logged-in-successfully/");
         Assert.assertEquals(driver.getTitle(), "Logged In Successfully | Practice Test Automation");
     }
+    
+    @Test
+    public void testInvalidUser() {
+        loginPage.login("teacher", "Password123");
+        String expectedError = "Your username is invalid!";
+        Assert.assertEquals(loginPage.getErrorMessage(), expectedError);
+    }
+    
+    @Test
+    public void testInvalidPassword() {
+        loginPage.login("student", "Secret123");
+        String expectedError = "Your password is invalid!";
+        Assert.assertEquals(loginPage.getErrorMessage(), expectedError);
+    }
 
     @AfterClass
     public void tearDown() {

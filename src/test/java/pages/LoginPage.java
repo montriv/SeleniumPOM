@@ -14,6 +14,9 @@ public class LoginPage extends BasePage {
 
     @FindBy(id = "submit")
     private WebElement submit;
+    
+    @FindBy(id = "error")
+    WebElement errorMessage;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -23,5 +26,9 @@ public class LoginPage extends BasePage {
         usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         submit.click();
+    }
+    
+    public String getErrorMessage() {
+        return errorMessage.getText();
     }
 }
